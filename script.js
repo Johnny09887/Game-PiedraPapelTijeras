@@ -10,3 +10,20 @@ function getComputerChoice() {
   }
 }
 console.log(getComputerChoice());
+
+/*Paso 3:Código para obtener la elección humana*/
+function getHumanChoice() {
+  let userChoice = prompt("Escribe piedra, papel o tijera").toLocaleLowerCase();
+
+  if (
+    userChoice === "piedra" ||
+    userChoice === "papel" ||
+    userChoice === "tijeras"
+  ) {
+    return userChoice;
+  } else {
+    console.log("Elección no válida. Por favor ingresa piedra, papel o tijera");
+    return getHumanChoice();
+  }
+}
+console.log(getHumanChoice());
