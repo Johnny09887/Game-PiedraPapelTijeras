@@ -54,6 +54,38 @@ function playRound(humanChoice, computerChoice) {
     `Puntuación actual: Humano ${humanScore} Computadora ${computerScore}`
   );
 }
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
+
+/*Función para jugar 5 rondas y determinar el ganador final*/
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    const result = playRound(humanSelection, computerSelection);
+
+    if (result === "humano") {
+      humanScore++;
+    } else if (result === "computadora") {
+      computerScore++;
+    }
+    console.log(
+      `Puntuación después de la ronda ${
+        i + 1
+      }: Humano ${humanScore} - Computadora ${computerScore}`
+    );
+  }
+
+  if (humanScore > computerScore) {
+    console.log(
+      `¡Felicitaciones! Ganaste el juego. Puntaje final: Humano ${humanScore} - Computadora ${computerScore}`
+    );
+  } else if (computerScore > humanScore) {
+    console.log(
+      `Lo siento, perdiste el juego. Puntaje final: Humano ${humanScore} - Computadora ${computerScore}`
+    );
+  } else {
+    console.log(
+      `El juego terminó en empate: Humano ${humanScore} - Computadora ${computerScore}`
+    );
+  }
+}
+playGame();
